@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <script src="js/config.js"></script>
+  <script src="js/wallet.js"></script>
+</head>
+<body>
+
+<h2>My Wallet</h2>
+<p>Name: <b id="uname"></b></p>
+<p>Balance: ₹<b id="bal"></b></p>
+
+<button onclick="location.href='scan.html'">Scan & Pay</button>
+<button onclick="location.href='mobile-pay.html'">Mobile Pay</button>
+<button onclick="location.href='history.html'">History</button>
+
+<div id="adminBtn" style="position:fixed;right:2px;bottom:2px;width:1px;height:1px;opacity:0.01"
+     onclick="openAdmin()"></div>
+
+<script>
+document.getElementById("uname").innerText = localStorage.getItem("USER_NAME");
+document.getElementById("bal").innerText = getBalance();
+
+function openAdmin() {
+  const id = prompt("Admin ID");
+  const pass = prompt("Password");
+  if (id === ADMIN_CONFIG.ADMIN_ID && pass === ADMIN_CONFIG.ADMIN_PASSWORD) {
+    localStorage.setItem("IS_ADMIN", "1");
+    location.href = "admin.html";
+  }
+}
+</script>
+
+</body>
+</html>
