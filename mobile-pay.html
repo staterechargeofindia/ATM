@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mobile Pay</title>
+  <script src="js/config.js"></script>
+  <script src="js/wallet.js"></script>
+  <script src="js/limit.js"></script>
+</head>
+<body>
+
+<h2>Pay by Mobile</h2>
+
+<input id="mobile" placeholder="Receiver Mobile"><br><br>
+<input id="amount" type="number" placeholder="Amount"><br><br>
+
+<button onclick="pay()">Send</button>
+
+<script>
+function pay() {
+  const amt = Number(amount.value);
+  if (!canSendAmount(amt)) {
+    alert("24h limit exceeded");
+    return;
+  }
+  debit(amt, mobile.value);
+  location.href = "receipt.html";
+}
+</script>
+
+</body>
+</html>
