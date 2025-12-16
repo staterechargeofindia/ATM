@@ -1,37 +1,26 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Create Wallet</title>
-  <script src="js/config.js"></script>
-  <script src="js/user.js"></script>
-</head>
-<body>
-
-<h2>Create Wallet</h2>
-
-<input id="name" placeholder="Full Name"><br><br>
-<input id="mobile" placeholder="Mobile Number"><br><br>
-<input id="aadhaar" placeholder="Aadhaar Number"><br><br>
-<input id="dob" type="date"><br><br>
-
-<label>
-  <input type="checkbox" id="confirm"> I confirm details are correct
-</label><br><br>
-
-<button onclick="register()">Create Wallet</button>
 
 <script>
 function register() {
-  if (!confirm.checked) {
+  const name = document.getElementById("name").value.trim();
+  const mobile = document.getElementById("mobile").value.trim();
+  const aadhaar = document.getElementById("aadhaar").value.trim();
+  const dob = document.getElementById("dob").value;
+  const confirmBox = document.getElementById("confirmDetails");
+
+  if (!name || !mobile || !aadhaar || !dob) {
+    alert("Please fill all details");
+    return;
+  }
+
+  if (!confirmBox.checked) {
     alert("Please confirm details");
     return;
   }
-  const permId = generatePermId(aadhaar.value, dob.value);
+
+  const permId = generatePermId(aadhaar, dob);
   localStorage.setItem("PERM_ID", permId);
-  localStorage.setItem("USER_NAME", name.value);
+  localStorage.setItem("USER_NAME", name);
+
   location.href = "dashboard.html";
 }
 </script>
-
-</body>
-</html>
