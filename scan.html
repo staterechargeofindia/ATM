@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Scan & Pay</title>
+  <script src="js/config.js"></script>
+  <script src="js/wallet.js"></script>
+  <script src="js/limit.js"></script>
+</head>
+<body>
+
+<h2>Scan & Pay (Demo)</h2>
+
+<input id="receiver" placeholder="Receiver Name"><br><br>
+<input id="amount" type="number" placeholder="Amount 1–100000"><br><br>
+
+<button onclick="pay()">Send</button>
+
+<script>
+function pay() {
+  const amt = Number(amount.value);
+  if (!canSendAmount(amt)) {
+    alert("24h limit exceeded");
+    return;
+  }
+  debit(amt, receiver.value);
+  location.href = "receipt.html";
+}
+</script>
+
+</body>
+</html>
