@@ -1,0 +1,4 @@
+const ADMIN_CONFIG = {
+  ADMIN_ID: "226492031189",
+  ADMIN_PASSWORD: "Cavpa3961k"
+};
