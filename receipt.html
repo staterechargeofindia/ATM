@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Receipt</title>
+</head>
+<body>
+
+<h2>Payment Successful</h2>
+<p>Amount: ₹<span id="amt"></span></p>
+<p>To: <span id="to"></span></p>
+<p>UTR: <span id="utr"></span></p>
+
+<script>
+document.getElementById("amt").innerText = localStorage.getItem("LAST_AMOUNT");
+document.getElementById("to").innerText = localStorage.getItem("LAST_TO");
+document.getElementById("utr").innerText = "UTR" + Date.now();
+</script>
+
+</body>
+</html>
