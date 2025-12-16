@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Wallet App</title>
+</head>
+<body>
+<script>
+  if (localStorage.getItem("PERM_ID")) {
+    location.href = "dashboard.html";
+  } else {
+    location.href = "register.html";
+  }
+</script>
+</body>
+</html>
